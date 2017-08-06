@@ -35,12 +35,42 @@ public class ChickController : MonoBehaviour {
 
     private JumpDir m_jumpDir = JumpDir.Right;
 
+    private Vector2 m_top1, m_top2, m_bottom1, m_bottom2,
+        m_left1, m_left2, m_left3, m_right1, m_right2, m_right3;
+
+    private BoxCollider2D m_collider2D = null;
+    private float m_boudaryScale = 0.9f;
+
+    private string m_checkColliderLayerName = "Brick";
+
     void Start()
     {
         m_inputHandler = GetComponent<InputHandler>();
         m_rgd = GetComponent<Rigidbody2D>();
+        m_collider2D = GetComponent<BoxCollider2D>();
 
+        SetBoundary();
         RegisterInputListener();
+    }
+
+    private void SetBoundary()
+    {
+        Vector2 center = new Vector2(transform.position.x, transform.position.y) + m_collider2D.offset;
+        float width = m_collider2D.size.x * m_boudaryScale;
+        float height = m_collider2D.size.y * m_boudaryScale;
+
+        float marginX = width / 10f;
+        float marginY = height / 10f;
+        m_top1 = center + new Vector2(-width/2f + marginX, height/2f);
+        m_top2 = center + new Vector2(width / 2f - marginX, height / 2f);
+        m_bottom1 = center + new Vector2(-width / 2f + marginX, -height / 2f);
+        m_bottom2 = center + new Vector2(width / 2f - marginX, -height / 2f);
+        m_left1 = center + new Vector2(-width / 2f, height / 2f - marginY);
+        m_left2 = center + new Vector2(-width / 2f, 0);
+        m_left1 = center + new Vector2(-width / 2f, -height / 2f + marginY);
+        m_right1 = center + new Vector2(width / 2f, height / 2f - marginY);
+        m_right2 = center + new Vector2(width / 2f, 0);
+        m_right1 = center + new Vector2(width / 2f, -height / 2f + marginY);
     }
 
     void Update()
@@ -48,63 +78,104 @@ public class ChickController : MonoBehaviour {
 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void FixedUpdate()
     {
-        Vector2 colliderPos = collision.contacts[0].point;
-        Debug.Log("Collider position is: " + colliderPos);
-        ColliderDir dir = GetColliderDir(colliderPos);
-        Debug.Log("OnCollisionEnter2D, collider dir is: " + dir.ToString());
-        if (dir == ColliderDir.Left || dir == ColliderDir.Right) {
-            if (m_jumpDir == JumpDir.Left) {
-                m_jumpDir = JumpDir.Right;
-            }else if (m_jumpDir == JumpDir.Right)
+        if (m_isJumping)
+        {
+            m_rgd.AddForce(new Vector2(GetJumpForceX(), m_jumpForceY));
+        }
+
+        var colliderDir = GetColliderDir();
+        if (colliderDir != ColliderDir.None) {
+            Debug.Log("Current collider is: " + colliderDir);
+            Debug.Log("Current jump dir is: " + m_jumpDir);
+            if (colliderDir == ColliderDir.Right && m_jumpDir == JumpDir.Right)
             {
                 m_jumpDir = JumpDir.Left;
             }
+            else if (colliderDir == ColliderDir.Left && m_jumpDir == JumpDir.Left)
+            {
+                m_jumpDir = JumpDir.Right;
+            }
         }
     }
-    private ColliderDir GetColliderDir(Vector3 colliderPos) {
-        return ColliderDir.None;
-    }
-
-    //private ColliderDir GetColliderDir(Transform collider)
+    //private void OnCollisionEnter2D(Collision2D collision)
     //{
-    //    RaycastHit2D hitBottom1 = Physics2D.Raycast(m_bottomLeft.position, Vector2.down, 0.1f);
-    //    RaycastHit2D hitBottom2 = Physics2D.Raycast(m_bottomRight.position, Vector2.down, 0.1f);
-    //    if (collider.transform == hitBottom1.transform || collider.transform == hitBottom2.transform)
-    //    {
-    //        return ColliderDir.Down;
-    //    }
+    //    SetBoundary();
 
-    //    RaycastHit2D hitUp1 = Physics2D.Raycast(m_topLeft.position, Vector2.up, 0.1f);
-    //    RaycastHit2D hitUp2 = Physics2D.Raycast(m_topRight.position, Vector2.up, 0.1f);
-    //    if (collider.transform == hitUp1.transform || collider.transform == hitUp2.transform)
-    //    {
-    //        return ColliderDir.Up;
+    //    Vector2 colliderPos = collision.contacts[0].point;
+    //    Debug.Log("Collider position is: " + colliderPos);
+    //    ColliderDir dir = GetColliderDir(colliderPos);
+    //    Debug.Log("OnCollisionEnter2D, collider dir is: " + dir.ToString());
+    //    if (dir == ColliderDir.Left || dir == ColliderDir.Right) {
+    //        if (m_jumpDir == JumpDir.Left) {
+    //            m_jumpDir = JumpDir.Right;
+    //        }else if (m_jumpDir == JumpDir.Right)
+    //        {
+    //            m_jumpDir = JumpDir.Left;
+    //        }
     //    }
-
-    //    RaycastHit2D hitLeft1 = Physics2D.Raycast(m_topLeft.position, Vector2.left, 0.1f);
-    //    RaycastHit2D hitLeft2 = Physics2D.Raycast(m_bottomLeft.position, Vector2.left, 0.1f);
-    //    if (collider.transform == hitLeft1.transform || collider.transform == hitLeft2.transform)
+    //}
+    //private ColliderDir GetColliderDir(Vector2 colliderPos)
+    //{
+    //    if (colliderPos.x <= m_top1.x )
     //    {
     //        return ColliderDir.Left;
     //    }
-
-    //    RaycastHit2D hitRight1 = Physics2D.Raycast(m_topLeft.position, Vector2.right, 0.1f);
-    //    RaycastHit2D hitRight2 = Physics2D.Raycast(m_bottomLeft.position, Vector2.right, 0.1f);
-    //    if (collider.transform == hitRight1.transform || collider.transform == hitRight2.transform)
+    //    if (colliderPos.x >= m_top2.x )
     //    {
     //        return ColliderDir.Right;
+    //    }
+    //    if (colliderPos.y <= m_bottom1.y)
+    //    {
+    //        return ColliderDir.Down;
+    //    }
+    //    if (colliderPos.y >= m_top2.y)
+    //    {
+    //        return ColliderDir.Up;
     //    }
 
     //    return ColliderDir.None;
     //}
 
-    private void FixedUpdate()
+    private ColliderDir GetColliderDir()
     {
-        if (m_isJumping) {
-            m_rgd.AddForce(new Vector2(GetJumpForceX(), m_jumpForceY));
+        SetBoundary();
+
+        float distanceX = m_collider2D.size.x * (1 - m_boudaryScale);
+        float distanceY = m_collider2D.size.y * (1 - m_boudaryScale);
+
+        RaycastHit2D hitBottom1 = Physics2D.Raycast(m_bottom1, Vector2.down, distanceY, 1 << LayerMask.NameToLayer(m_checkColliderLayerName));
+        RaycastHit2D hitBottom2 = Physics2D.Raycast(m_bottom2, Vector2.down, distanceY, 1 << LayerMask.NameToLayer(m_checkColliderLayerName));
+        if (hitBottom1.collider != null || hitBottom2.collider != null)
+        {
+            return ColliderDir.Down;
         }
+
+        RaycastHit2D hitUp1 = Physics2D.Raycast(m_top1, Vector2.up, distanceY, 1 << LayerMask.NameToLayer(m_checkColliderLayerName));
+        RaycastHit2D hitUp2 = Physics2D.Raycast(m_top2, Vector2.up, distanceY, 1 << LayerMask.NameToLayer(m_checkColliderLayerName));
+        if (hitUp1.collider != null || hitUp2.collider != null)
+        {
+            return ColliderDir.Up;
+        }
+
+        RaycastHit2D hitLeft1 = Physics2D.Raycast(m_left1, Vector2.left, distanceX, 1 << LayerMask.NameToLayer(m_checkColliderLayerName));
+        RaycastHit2D hitLeft2 = Physics2D.Raycast(m_left2, Vector2.left, distanceX, 1 << LayerMask.NameToLayer(m_checkColliderLayerName));
+        RaycastHit2D hitLeft3 = Physics2D.Raycast(m_left3, Vector2.left, distanceX, 1 << LayerMask.NameToLayer(m_checkColliderLayerName));
+        if (hitLeft1.collider != null || hitLeft2.collider != null || hitLeft3.collider != null)
+        {
+            return ColliderDir.Left;
+        }
+
+        RaycastHit2D hitRight1 = Physics2D.Raycast(m_right1, Vector2.right, distanceX, 1 << LayerMask.NameToLayer(m_checkColliderLayerName));
+        RaycastHit2D hitRight2 = Physics2D.Raycast(m_right2, Vector2.right, distanceX, 1 << LayerMask.NameToLayer(m_checkColliderLayerName));
+        RaycastHit2D hitRight3 = Physics2D.Raycast(m_right2, Vector2.right, distanceX, 1 << LayerMask.NameToLayer(m_checkColliderLayerName));
+        if (hitRight1.collider != null || hitRight2.collider != null || hitRight3.collider != null)
+        {
+            return ColliderDir.Right;
+        }
+
+        return ColliderDir.None;
     }
 
     private float GetJumpForceX()
