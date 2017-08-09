@@ -11,11 +11,13 @@ namespace PlatformBasic
 
         private Transform m_target;
         private float m_height;
+        private float m_toBottomHeight;
 
         void Start()
         {
             m_target = GameObject.FindGameObjectWithTag(Tags.PLAYER).transform;
             m_height = m_top.position.y - m_bottom.position.y;
+            m_toBottomHeight = transform.position.y - m_bottom.position.y;
         }
 
         void Update()
@@ -47,7 +49,21 @@ namespace PlatformBasic
 
         private void MoveBoard()
         {
-            transform.position = transform.position + new Vector3(0, m_height * 2, 0);
+            float y = GetMoveToPosY();
+            transform.position = new Vector3(transform.position.x, y + m_toBottomHeight, transform.position.y);
+        }
+
+        private float GetMoveToPosY()
+        {
+            GameObject o = gameObject;
+            GameObject[] objs = GameObject.FindGameObjectsWithTag(transform.tag);
+            foreach (var obj in objs) {
+                if (obj.transform.position.y > o.transform.position.y) {
+                    o = obj;
+                }
+            }
+            float y = o.GetComponent<RecycableItem>().m_top.position.y;
+            return y;
         }
     }
 }

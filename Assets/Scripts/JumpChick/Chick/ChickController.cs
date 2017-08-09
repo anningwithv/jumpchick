@@ -37,10 +37,10 @@ namespace JumpChick
         //private float m_jumpForceY = 20f;
         //private float m_jumpForceX = 10f;
         private float m_speedY = 0f;
-        private float m_maxSpeedY = 5f;
-        private float m_deltaSpeedY = 10f;
+        private float m_maxSpeedY = 8f;
+        private float m_deltaSpeedY = 12f;
         private float m_speedX = 0f;
-        private float m_maxSpeedX = 3f;
+        private float m_maxSpeedX = 4f;
 
         private JumpDir m_jumpDir = JumpDir.Right;
 
