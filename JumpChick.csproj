@@ -82,10 +82,46 @@
     <Reference Include="UnityEditor.iOS.Extensions.Common">
       <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Demigiant\DOTween\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween50">
+      <HintPath>Assets\Demigiant\DOTween\DOTween50.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween46">
+      <HintPath>Assets\Demigiant\DOTween\DOTween46.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>Assets\Demigiant\DOTween\DOTween43.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Chick\ChickController.cs" />
-    <Compile Include="Assets\Scripts\Chick\InputHandler.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Examples\Basics.cs" />
+    <Compile Include="Assets\Demigiant\DOTween\Examples\Sequences.cs" />
+    <Compile Include="Assets\Scripts\Basic\Camera\CameraAutoSize.cs" />
+    <Compile Include="Assets\Scripts\Basic\Camera\CameraBasic.cs" />
+    <Compile Include="Assets\Scripts\Basic\Camera\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Basic\Camera\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Basic\GameManager\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\Basic\GameManager\GameBasic.cs" />
+    <Compile Include="Assets\Scripts\Basic\GameManager\InputHandler.cs" />
+    <Compile Include="Assets\Scripts\Basic\Item\RecycableItem.cs" />
+    <Compile Include="Assets\Scripts\Basic\Player\PlayerBasic.cs" />
+    <Compile Include="Assets\Scripts\Basic\Player\PlayerColliderCheck.cs" />
+    <Compile Include="Assets\Scripts\Basic\Utils\DataHelper.cs" />
+    <Compile Include="Assets\Scripts\Basic\Utils\Tags.cs" />
+    <Compile Include="Assets\Scripts\Basic\Utils\Util.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\Camera\CameraController.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\Chick\ChickController.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\Game\GameController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Demigiant\DOTween\DOTween.XML" />
+    <None Include="Assets\Demigiant\DOTween\DOTween43.xml" />
+    <None Include="Assets\Demigiant\DOTween\DOTween46.xml" />
+    <None Include="Assets\Demigiant\DOTween\DOTween50.xml" />
+    <None Include="Assets\Demigiant\DOTween\Editor\DOTweenEditor.XML" />
+    <None Include="Assets\Demigiant\DOTween\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

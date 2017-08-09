@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4034048564084724}
   - component: {fileID: 212819847531874260}
-  - component: {fileID: 61900298181653736}
+  - component: {fileID: 61930019385521986}
   m_Layer: 8
   m_Name: Brick_small_2
   m_TagString: Untagged
@@ -34,14 +34,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1650166071465998}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.58, y: -3.02, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.58, y: -2.458, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61900298181653736
+--- !u!61 &61930019385521986
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -53,18 +53,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.00025177002, y: 0.007314682}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
+    border: {x: 0.04, y: 0.04, z: 0.04, w: 0.04}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.5652174, y: 0.5652174}
+    oldSize: {x: 0.65, y: 0.65}
     newSize: {x: 0.5652174, y: 0.5652174}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5652174, y: 0.5652174}
+  m_Size: {x: 0.5996008, y: 0.59935284}
   m_EdgeRadius: 0
 --- !u!212 &212819847531874260
 SpriteRenderer:
@@ -98,7 +98,7 @@ SpriteRenderer:
   m_SortingLayerID: -1132548185
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e688d00b44f615c488d54d9fe9cd4441, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 38cf72ddf26bc7c43a9a2f5901f187c8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
