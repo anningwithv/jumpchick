@@ -8,6 +8,8 @@ namespace PlatformBasic
         public float m_smooth = 5.0f;
         public float m_toTargetDistance = 2f;
 
+        public System.Action<Vector3> OnCameraMove = null;
+
         private Transform m_target;
 
         void Start()
@@ -37,7 +39,17 @@ namespace PlatformBasic
         private bool NeedToMoveCamera()
         {
             //Debug.Log (" current distance is； " + (m_target.position.y - transform.position.y ));
-            if (transform.position.y - m_target.position.y < m_toTargetDistance)
+
+            bool needMove = false;
+
+            if (GameConfig._moveDir == GameConfig.MoveDir.Down) {
+                needMove = m_target.position.y - transform.position.y <= m_toTargetDistance;
+            }
+            else {
+                needMove = transform.position.y - m_target.position.y <= m_toTargetDistance;
+            }
+
+            if (needMove)
             {
                 //Debug.Log ("need move camera");
                 return true;
@@ -49,6 +61,10 @@ namespace PlatformBasic
         {
             transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x,
                 m_target.position.y + m_toTargetDistance, transform.position.z), m_smooth * Time.deltaTime);
+
+            if (OnCameraMove != null) {
+                OnCameraMove.Invoke(transform.position);
+            }
         }
 
         //private void OnPlayerRevive()

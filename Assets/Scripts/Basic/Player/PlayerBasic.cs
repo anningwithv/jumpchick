@@ -7,17 +7,17 @@ namespace PlatformBasic
     public class PlayerBasic : MonoBehaviour
     {
         protected InputHandler m_inputHandler = null;
-        protected PlayerColliderCheck m_playerColliderCheck = null;
+        //protected PlayerColliderCheck m_playerColliderCheck = null;
         protected Rigidbody2D m_rgd = null;
 
         protected virtual void Start()
         {
             m_inputHandler = GetComponent<InputHandler>();
-            m_playerColliderCheck = GetComponent<PlayerColliderCheck>();
+            //m_playerColliderCheck = GetComponent<PlayerColliderCheck>();
             m_rgd = GetComponent<Rigidbody2D>();
 
             RegisterInputListener();
-            RegisterColliderListener();
+            //RegisterColliderListener();
         }
 
         void Update()
@@ -31,13 +31,13 @@ namespace PlatformBasic
             m_inputHandler.OnMouseReleased += OnPlayerReleased;
         }
 
-        private void RegisterColliderListener()
-        {
-            m_playerColliderCheck.OnColldierDown += OnColliderDown;
-            m_playerColliderCheck.OnColliderUp += OnColliderUp;
-            m_playerColliderCheck.OnColliderLeft += OnColliderLeft;
-            m_playerColliderCheck.OnColliderRight += OnColliderRight;
-        }
+        //private void RegisterColliderListener()
+        //{
+        //    m_playerColliderCheck.OnColldierDown += OnColliderDown;
+        //    m_playerColliderCheck.OnColliderUp += OnColliderUp;
+        //    m_playerColliderCheck.OnColliderLeft += OnColliderLeft;
+        //    m_playerColliderCheck.OnColliderRight += OnColliderRight;
+        //}
 
         protected virtual void OnPlayerPressed()
         {
@@ -47,20 +47,20 @@ namespace PlatformBasic
         {
         }
 
-        protected virtual void OnColliderDown()
-        {
-        }
+        //protected virtual void OnColliderDown()
+        //{
+        //}
 
-        protected virtual void OnColliderUp()
-        {
-        }
+        //protected virtual void OnColliderUp()
+        //{
+        //}
 
-        protected virtual void OnColliderLeft()
-        {
-        }
+        //protected virtual void OnColliderLeft()
+        //{
+        //}
 
-        protected virtual void OnColliderRight()
-        {
-        }
+        //protected virtual void OnColliderRight()
+        //{
+        //}
     }
 }

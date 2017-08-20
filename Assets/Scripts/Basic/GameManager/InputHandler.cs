@@ -10,6 +10,9 @@ namespace PlatformBasic
         public System.Action OnMousePressed = null;
         public System.Action OnMouseReleased = null;
 
+        public System.Action OnLeftClicked = null;
+        public System.Action OnRightClicked = null;
+
         void Start()
         {
 
@@ -30,6 +33,22 @@ namespace PlatformBasic
                 if (OnMouseReleased != null)
                 {
                     OnMouseReleased.Invoke();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                if (OnLeftClicked != null)
+                {
+                    OnLeftClicked.Invoke();
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                if (OnRightClicked != null)
+                {
+                    OnRightClicked.Invoke();
                 }
             }
         }

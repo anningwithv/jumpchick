@@ -85,14 +85,14 @@
     <Reference Include="DOTween">
       <HintPath>Assets\Demigiant\DOTween\DOTween.dll</HintPath>
     </Reference>
-    <Reference Include="DOTween50">
-      <HintPath>Assets\Demigiant\DOTween\DOTween50.dll</HintPath>
+    <Reference Include="DOTween43">
+      <HintPath>Assets\Demigiant\DOTween\DOTween43.dll</HintPath>
     </Reference>
     <Reference Include="DOTween46">
       <HintPath>Assets\Demigiant\DOTween\DOTween46.dll</HintPath>
     </Reference>
-    <Reference Include="DOTween43">
-      <HintPath>Assets\Demigiant\DOTween\DOTween43.dll</HintPath>
+    <Reference Include="DOTween50">
+      <HintPath>Assets\Demigiant\DOTween\DOTween50.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -104,16 +104,25 @@
     <Compile Include="Assets\Scripts\Basic\Camera\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\Basic\GameManager\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Basic\GameManager\GameBasic.cs" />
+    <Compile Include="Assets\Scripts\Basic\GameManager\GameConfig.cs" />
     <Compile Include="Assets\Scripts\Basic\GameManager\InputHandler.cs" />
+    <Compile Include="Assets\Scripts\Basic\Item\ColliderDamage.cs" />
+    <Compile Include="Assets\Scripts\Basic\Item\Parallax.cs" />
     <Compile Include="Assets\Scripts\Basic\Item\RecycableItem.cs" />
     <Compile Include="Assets\Scripts\Basic\Player\PlayerBasic.cs" />
     <Compile Include="Assets\Scripts\Basic\Player\PlayerColliderCheck.cs" />
+    <Compile Include="Assets\Scripts\Basic\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Basic\Utils\DataHelper.cs" />
+    <Compile Include="Assets\Scripts\Basic\Utils\Rotator.cs" />
     <Compile Include="Assets\Scripts\Basic\Utils\Tags.cs" />
     <Compile Include="Assets\Scripts\Basic\Utils\Util.cs" />
     <Compile Include="Assets\Scripts\JumpChick\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\JumpChick\Chick\ChickController.cs" />
     <Compile Include="Assets\Scripts\JumpChick\Game\GameController.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\Obstacles\ActiveWhenPlayerNear.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\Obstacles\Blade.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\Obstacles\BladeManager.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\Obstacles\Cannon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Demigiant\DOTween\DOTween.XML" />

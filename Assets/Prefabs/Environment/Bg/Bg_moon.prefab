@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 4716894886443308}
   - component: {fileID: 212351095729424404}
   - component: {fileID: 114522995371600676}
+  - component: {fileID: 114709557522519082}
   m_Layer: 0
   m_Name: Bg_moon
   m_TagString: Bg
@@ -110,7 +111,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773166359581598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.47, z: -1.8299999}
+  m_LocalPosition: {x: 0, y: 1.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4716894886443308}
@@ -136,7 +137,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1263632849542046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.35, z: -4.6800003}
+  m_LocalPosition: {x: 0, y: -6.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4716894886443308}
@@ -149,7 +150,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1989491888001982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 14.52, z: 9.85}
+  m_LocalPosition: {x: 0, y: -14.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4519059036442586}
@@ -172,6 +173,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_top: {fileID: 4081769111738650}
   m_bottom: {fileID: 4486226307019478}
+--- !u!114 &114709557522519082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1989491888001982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd3bc3de5ac05b14d9c556ea0545873c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_parallaxScale: 0.8
 --- !u!212 &212351095729424404
 SpriteRenderer:
   m_ObjectHideFlags: 1
