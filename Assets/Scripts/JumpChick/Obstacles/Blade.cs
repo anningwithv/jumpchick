@@ -17,10 +17,7 @@ namespace JumpChick
 
         void Start()
         {
-            if (m_type == Type.Rotate)
-            {
-                transform.DORotate(new Vector3(0, 0, 360), 0.4f).SetRelative().SetEase(Ease.Linear).SetLoops(-1);
-            }
+
         }
 
         void Update()

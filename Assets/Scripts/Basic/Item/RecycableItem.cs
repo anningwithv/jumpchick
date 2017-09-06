@@ -50,7 +50,7 @@ namespace PlatformBasic
                 needMoveBoard = m_target.position.y - m_top.position.y > CameraAutoSize.sCameraSize + 1;
             }
             else {
-                needMoveBoard = m_bottom.position.y - m_target.position.y > CameraAutoSize.sCameraSize + 1;
+                needMoveBoard = m_bottom.position.y - m_target.position.y > CameraAutoSize.sCameraSize + 5;
             }
 
             if(needMoveBoard)

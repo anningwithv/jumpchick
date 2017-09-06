@@ -38,12 +38,14 @@ namespace JumpChick
         private float m_jumpForceY = 20f;
         private float m_jumpForceX = 10f;
         private float m_speedY = 0f;
-        private float m_maxFallSpeedY = -10f;
-        private float m_maxFallSlowSpeedY = -3f;
+        private float m_maxFallSpeedY = -7f;
+        private float m_maxFallSlowSpeedY = -2f;
         private float m_deltaSpeedY = 12f;
         private float m_speedX = 0f;
         private float m_maxSpeedX = 4f;
         private float m_moveRangeX = 2.6f;
+
+        private Animator m_anim = null;
 
         private State m_state;
         public State state
@@ -62,13 +64,37 @@ namespace JumpChick
         {
             state = State.Idle;
 
+            m_anim = GetComponent<Animator>();
+
+            RegisterListener();
+        }
+
+        private void RegisterListener()
+        {
             var input = FindObjectOfType<InputHandler>();
             input.OnLeftClicked += OnMoveLeft;
             input.OnRightClicked += OnMoveRight;
+
+            var health = GetComponent<PlayerHealth>();
+            health.OnDead += OnPlayerDead;
+        }
+
+        private void OnPlayerDead()
+        {
+            if(state != State.Dead)
+            {
+                state = State.Dead;
+                transform.DOMoveY(4f, 1.0f).SetRelative();
+                transform.DOScale(2.0f, 1.0f);
+            }
+
         }
 
         private void Update()
         {
+            if (!GameController._instance.IsRuning())
+                return;
+
             UpdateSpeed();
         }
 
@@ -124,13 +150,15 @@ namespace JumpChick
         {
             m_isFallingSlow = true;
             ShowSlowEffect(m_isFallingSlow);
-            //Debug.Log("Player pressed. jump");
+            m_anim.SetBool("FallSlow", true);
+            Debug.Log("Player pressed. jump");
         }
 
         protected override void OnPlayerReleased()
         {
             m_isFallingSlow = false;
             ShowSlowEffect(m_isFallingSlow);
+            m_anim.SetBool("FallSlow", false);
             //Debug.Log("Player relesed. stop jump");
         }
 
@@ -148,10 +176,10 @@ namespace JumpChick
         {
             if (show)
             {
-                transform.DOScale(new Vector3(1.5f, 1.5f, 1f), 0.2f);
+                //transform.DOScale(new Vector3(1.5f, 1.5f, 1f), 0.2f);
             }
             else {
-                transform.DOScale(new Vector3(1.0f, 1.0f, 1f), 0.2f);
+                //transform.DOScale(new Vector3(1.0f, 1.0f, 1f), 0.2f);
             }
         }
         //protected override void OnColliderDown()

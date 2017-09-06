@@ -59,8 +59,16 @@ namespace PlatformBasic
 
         private void MoveCamera()
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x,
+            if (GameConfig._moveDir == GameConfig.MoveDir.Down)
+            {
+                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x,
+                    m_target.position.y - m_toTargetDistance, transform.position.z), m_smooth * Time.deltaTime);
+            }
+            else
+            {
+                transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x,
                 m_target.position.y + m_toTargetDistance, transform.position.z), m_smooth * Time.deltaTime);
+            }
 
             if (OnCameraMove != null) {
                 OnCameraMove.Invoke(transform.position);
