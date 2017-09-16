@@ -32,8 +32,7 @@ namespace JumpChick
         public Transform SpawnObject(Transform prefab)
         {
             Transform objectToRelease = null;
-            //if (m_myPool.ContainsKey(prefab.name))
-            if(false)
+            if (m_myPool.ContainsKey(prefab.name))
             {
                 m_tempObjectList.Clear();
                 m_tempObjectList = new List<Transform>(m_myPool[prefab.name]);
@@ -46,7 +45,8 @@ namespace JumpChick
                 }
                 if (objectToRelease == null)
                 {
-                    objectToRelease = (Transform)Instantiate(prefab);
+                    objectToRelease = (HierarchicalPrefabUtility.Instantiate(prefab.gameObject, transform.position, Quaternion.identity)).transform;
+                    //objectToRelease = (Transform)Instantiate(prefab);
                     objectToRelease.name = prefab.name;
                     m_myPool[prefab.name].Add(objectToRelease);
                 }
@@ -54,7 +54,9 @@ namespace JumpChick
             else
             {
                 m_tempObjectList.Clear();
-                objectToRelease = (Transform)Instantiate(prefab);
+                //objectToRelease = (Transform)Instantiate(prefab);
+                objectToRelease = (HierarchicalPrefabUtility.Instantiate(prefab.gameObject, transform.position, Quaternion.identity)).transform;
+
                 objectToRelease.name = prefab.name;
                 m_tempObjectList.Add(objectToRelease);
                 m_myPool[prefab.name] = new List<Transform>(m_tempObjectList);

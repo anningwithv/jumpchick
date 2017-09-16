@@ -42,7 +42,7 @@ namespace JumpChick
         private float m_maxFallSlowSpeedY = -2f;
         private float m_deltaSpeedY = 12f;
         private float m_speedX = 0f;
-        private float m_maxSpeedX = 4f;
+        private float m_maxSpeedX = 6f;
         private float m_moveRangeX = 2.6f;
 
         private Animator m_anim = null;
@@ -52,6 +52,13 @@ namespace JumpChick
         {
             get { return m_state; }
             set { m_state = value; }
+        }
+
+        public static ChickController Instance = null;
+
+        private void Awake()
+        {
+            Instance = this;
         }
 
         protected override void Start()
@@ -81,7 +88,7 @@ namespace JumpChick
 
         private void OnPlayerDead()
         {
-            if(state != State.Dead)
+            if (state != State.Dead)
             {
                 state = State.Dead;
                 transform.DOMoveY(4f, 1.0f).SetRelative();
@@ -143,10 +150,10 @@ namespace JumpChick
 
         void FixedUpdate()
         {
- 
+
         }
 
-        protected override void OnPlayerPressed()
+        public override void OnPlayerPressed()
         {
             m_isFallingSlow = true;
             ShowSlowEffect(m_isFallingSlow);
@@ -154,7 +161,7 @@ namespace JumpChick
             Debug.Log("Player pressed. jump");
         }
 
-        protected override void OnPlayerReleased()
+        public override void OnPlayerReleased()
         {
             m_isFallingSlow = false;
             ShowSlowEffect(m_isFallingSlow);
@@ -162,14 +169,19 @@ namespace JumpChick
             //Debug.Log("Player relesed. stop jump");
         }
 
-        private void OnMoveLeft()
+        public void OnMoveLeft()
         {
             m_speedX = -m_maxSpeedX;
         }
 
-        private void OnMoveRight()
+        public void OnMoveRight()
         {
             m_speedX = m_maxSpeedX;
+        }
+
+        public void OnStopMoveHorizontal()
+        {
+            m_speedX = 0;
         }
 
         private void ShowSlowEffect(bool show)

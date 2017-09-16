@@ -36,13 +36,13 @@ namespace PlatformBasic
                             if (m_state == GameState.Init)
                             {
                                 if (OnGameStart != null) {
-                                    Debug.Log("On game run");
+                                    //Debug.Log("On game run");
                                     OnGameStart.Invoke();
                                 }
                             }else if (m_state == GameState.Paused) {
                                 if (OnGameResumed != null)
                                 {
-                                    Debug.Log("On game paused");
+                                    //Debug.Log("On game paused");
                                     OnGameResumed.Invoke();
                                 }
                             }

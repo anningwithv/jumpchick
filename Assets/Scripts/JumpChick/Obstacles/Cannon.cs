@@ -19,6 +19,7 @@ namespace JumpChick
         {
             ActiveWhenPlayerNear awpn = GetComponent<ActiveWhenPlayerNear>();
             awpn.OnPlayerNear += OnPlayerNear;
+            m_dirction *= (int)transform.localScale.x;
         }
 
         private void OnPlayerNear()
@@ -32,15 +33,15 @@ namespace JumpChick
         {
             while (m_startToFire)
             {
-                yield return new WaitForSeconds(m_fireInterval);
                 SpawnMissile();
+                yield return new WaitForSeconds(m_fireInterval + Random.Range(-0.5f, 0.5f));
             }
         }
 
         private void SpawnMissile()
         {
             GameObject missile = GameObject.Instantiate(m_missile, m_missilePos.position, Quaternion.identity) as GameObject;
-            missile.transform.DOMoveX(10f * m_dirction, 10f / m_missileSpd).SetRelative().OnComplete(
+            missile.transform.DOMoveX(10f * m_dirction, 10f / m_missileSpd).SetEase(Ease.Linear).SetRelative().OnComplete(
                 () => {
                     Destroy(missile);
                 }

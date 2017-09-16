@@ -31,7 +31,11 @@ namespace PlatformBasic
 
             if (m_target == null)
             {
-                Debug.LogError("Can't find target");
+                m_target = GameObject.FindGameObjectWithTag(Tags.PLAYER).transform;
+                if (m_target == null)
+                {
+                    Debug.LogError("Can't find target");
+                }
                 return;
             }
 

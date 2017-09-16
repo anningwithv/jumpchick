@@ -114,6 +114,7 @@
     <Compile Include="Assets\Scripts\Basic\GameManager\GameConfig.cs" />
     <Compile Include="Assets\Scripts\Basic\GameManager\InputHandler.cs" />
     <Compile Include="Assets\Scripts\Basic\Item\ColliderDamage.cs" />
+    <Compile Include="Assets\Scripts\Basic\Item\DestroyWithDelay.cs" />
     <Compile Include="Assets\Scripts\Basic\Item\Parallax.cs" />
     <Compile Include="Assets\Scripts\Basic\Item\RecycableItem.cs" />
     <Compile Include="Assets\Scripts\Basic\Player\PlayerBasic.cs" />
@@ -133,8 +134,15 @@
     <Compile Include="Assets\Scripts\JumpChick\Obstacles\Blade.cs" />
     <Compile Include="Assets\Scripts\JumpChick\Obstacles\BladeManager.cs" />
     <Compile Include="Assets\Scripts\JumpChick\Obstacles\Cannon.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\Obstacles\Food.cs" />
     <Compile Include="Assets\Scripts\JumpChick\Obstacles\LevelTile.cs" />
     <Compile Include="Assets\Scripts\JumpChick\Obstacles\MoveWithPath.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\UI\ButtonPressCheck.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\UI\GameOverPanel.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\UI\GamePanel.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\UI\IUIPanel.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\UI\MenuPanel.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\JumpChick\Util\DataHelper.cs" />
   </ItemGroup>
   <ItemGroup>

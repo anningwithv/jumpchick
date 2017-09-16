@@ -77,14 +77,18 @@ namespace JumpChick
 
         private void SpawnNextLevel()
         {
-            GetCurList();
+            //GetCurList();
+            //for test
+            m_curLevels = m_levels;
 
             int index = Random.Range(0, m_curLevels.Count);
             var levelPrefab = m_curLevels[index];
             Debug.Log("spawn obstacle name is: " + levelPrefab.name);
 
             //Transform prefab = PoolManager.Instance.SpawnObject(levelPrefab.transform);
-            Transform prefab = (GameObject.Instantiate(levelPrefab.gameObject) as GameObject).transform ;
+            //GameObject go = HierarchicalPrefabUtility.Instantiate(levelPrefab.gameObject, transform.position, Quaternion.identity);
+            Transform prefab = PoolManager.Instance.SpawnObject(levelPrefab.transform);
+            //Transform prefab = go.transform;
             if (m_curLastLevel == null)
             {
                 prefab.position = new Vector3(0, -2, 0);

@@ -39,11 +39,11 @@ namespace PlatformBasic
         //    m_playerColliderCheck.OnColliderRight += OnColliderRight;
         //}
 
-        protected virtual void OnPlayerPressed()
+        public virtual void OnPlayerPressed()
         {
         }
 
-        protected virtual void OnPlayerReleased()
+        public virtual void OnPlayerReleased()
         {
         }
 

@@ -9,75 +9,46 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1308536574441090}
+  m_RootGameObject: {fileID: 1130597481487354}
   m_IsPrefabParent: 1
---- !u!1 &1308536574441090
+--- !u!1 &1130597481487354
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4394940742225878}
-  - component: {fileID: 212169675651357254}
-  - component: {fileID: 61318126351526636}
-  - component: {fileID: 114343504130240172}
-  - component: {fileID: 114056315852857424}
+  - component: {fileID: 4507050233464536}
+  - component: {fileID: 212991820774825688}
+  - component: {fileID: 58723932414687256}
+  - component: {fileID: 114317986452485346}
+  - component: {fileID: 114684371005701462}
   m_Layer: 8
-  m_Name: Cannon
+  m_Name: Cannon_missile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1534217691695060
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4161672876411868}
-  m_Layer: 8
-  m_Name: MissilePos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4161672876411868
+--- !u!4 &4507050233464536
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1534217691695060}
+  m_GameObject: {fileID: 1130597481487354}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.719, y: 0.124, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4394940742225878}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4394940742225878
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1308536574441090}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.47, y: 1.79, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4161672876411868}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61318126351526636
-BoxCollider2D:
+--- !u!58 &58723932414687256
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1308536574441090}
+  m_GameObject: {fileID: 1130597481487354}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -85,52 +56,38 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1, y: 1.05}
-    newSize: {x: 1.1, y: 1.05}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1, y: 1.05}
-  m_EdgeRadius: 0
---- !u!114 &114056315852857424
+  m_Radius: 0.325
+--- !u!114 &114317986452485346
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1308536574441090}
+  m_GameObject: {fileID: 1130597481487354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce4caeaa2de4ebc4d9370d72c14f3d75, type: 3}
+  m_Script: {fileID: 11500000, guid: 1abc3e068e7542c40b992f7877ba92b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_activeDistance: -1
---- !u!114 &114343504130240172
+  m_damage: 1
+--- !u!114 &114684371005701462
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1308536574441090}
+  m_GameObject: {fileID: 1130597481487354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a03309c7d2140f4478b11e533f361f12, type: 3}
+  m_Script: {fileID: 11500000, guid: 4439e43fe4952bf4fb4c1ef6e44a20bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_missile: {fileID: 1130597481487354, guid: 4418fa45b12cf34428f87c7d783f2446, type: 2}
-  m_missilePos: {fileID: 4161672876411868}
-  m_dirction: 1
-  m_fireInterval: 2
-  m_missileSpd: 1
---- !u!212 &212169675651357254
+  m_delay: 8
+--- !u!212 &212991820774825688
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1308536574441090}
+  m_GameObject: {fileID: 1130597481487354}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -157,12 +114,12 @@ SpriteRenderer:
   m_SortingLayerID: -1132548185
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2715b1a84a57d5742a29acfbaadfb9d3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b8a02c346ef9f6245bc2a9ca6d076a20, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.1, y: 1.05}
+  m_Size: {x: 0.65, y: 0.65}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

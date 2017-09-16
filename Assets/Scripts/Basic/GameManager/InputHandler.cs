@@ -20,37 +20,15 @@ namespace PlatformBasic
 
         void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (OnMousePressed != null)
-                {
-                    OnMousePressed.Invoke();
-                }
-            }
 
-            if (Input.GetMouseButtonUp(0))
-            {
-                if (OnMouseReleased != null)
-                {
-                    OnMouseReleased.Invoke();
-                }
-            }
 
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                if (OnLeftClicked != null)
-                {
-                    OnLeftClicked.Invoke();
-                }
-            }
-
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                if (OnRightClicked != null)
-                {
-                    OnRightClicked.Invoke();
-                }
-            }
+            //if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+            //{
+            //    if (OnLeftClicked != null)
+            //    {
+            //        JumpChick.ChickController.Instance.OnStopMoveHorizontal();
+            //    }
+            //}
         }
     }
 }

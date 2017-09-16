@@ -6,8 +6,9 @@ using DG.Tweening;
 public class MoveWithPath : MonoBehaviour
 {
     public List<Transform> m_pathPointList = new List<Transform>();
-    public float m_moveSpd = 1.0f;
-    
+    //public float m_moveSpd = 1.0f;
+    public float m_totalTime = 4.0f;
+
 	void Start ()
     {
         Vector3[] posList = new Vector3[m_pathPointList.Count];
@@ -18,7 +19,7 @@ public class MoveWithPath : MonoBehaviour
 
         Sequence seq = DOTween.Sequence();
 
-        transform.DOPath(posList, 3.0f, PathType.Linear).SetLoops(-1);
+        transform.DOPath(posList, m_totalTime, PathType.Linear).SetEase(Ease.Linear).SetLoops(-1);
 
         seq.SetLoops(-1);
 	}
