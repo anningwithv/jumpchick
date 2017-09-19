@@ -6,13 +6,10 @@ namespace PlatformBasic
 {
     public class PlayerBasic : MonoBehaviour
     {
-        protected InputHandler m_inputHandler = null;
-        //protected PlayerColliderCheck m_playerColliderCheck = null;
         protected Rigidbody2D m_rgd = null;
 
         protected virtual void Start()
         {
-            m_inputHandler = GetComponent<InputHandler>();
             //m_playerColliderCheck = GetComponent<PlayerColliderCheck>();
             m_rgd = GetComponent<Rigidbody2D>();
 
@@ -27,8 +24,7 @@ namespace PlatformBasic
 
         private void RegisterInputListener()
         {
-            m_inputHandler.OnMousePressed += OnPlayerPressed;
-            m_inputHandler.OnMouseReleased += OnPlayerReleased;
+
         }
 
         //private void RegisterColliderListener()

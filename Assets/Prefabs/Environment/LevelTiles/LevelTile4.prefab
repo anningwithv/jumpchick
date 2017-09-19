@@ -142,9 +142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_bCanBeInstantiatedAtRuntime: 1
-  m_iHierarchicalPrefabVersionNumber: 3
+  m_iHierarchicalPrefabVersionNumber: 4
   m_rPrefabObject: {fileID: 100100000}
-  m_rCompiledHierarchicalPrefab: {fileID: 1460915411641862, guid: 09fb74a90c29124488e637367ae63f9c,
+  m_rCompiledHierarchicalPrefab: {fileID: 1634200265892824, guid: 09fb74a90c29124488e637367ae63f9c,
     type: 2}
   m_bSceneInstance: 0
 --- !u!114 &114796304139570832
@@ -167,7 +167,7 @@ MonoBehaviour:
         propertyPath: m_LocalPosition.x
         target: {fileID: 4164955585422210, guid: af5c52d7bd20f9b4095c5a7a02e86228,
           type: 2}
-        value: 0
+        value: -1.69
         isRootTransform: 1
         targetTransformPrefabObject: {fileID: 100100000, guid: af5c52d7bd20f9b4095c5a7a02e86228,
           type: 2}
@@ -175,7 +175,7 @@ MonoBehaviour:
         propertyPath: m_LocalPosition.y
         target: {fileID: 4164955585422210, guid: af5c52d7bd20f9b4095c5a7a02e86228,
           type: 2}
-        value: -6.7499995
+        value: -3.24
         isRootTransform: 1
         targetTransformPrefabObject: {fileID: 100100000, guid: af5c52d7bd20f9b4095c5a7a02e86228,
           type: 2}
@@ -227,13 +227,6 @@ MonoBehaviour:
         isRootTransform: 1
         targetTransformPrefabObject: {fileID: 100100000, guid: af5c52d7bd20f9b4095c5a7a02e86228,
           type: 2}
-      - objectReference: {fileID: 0}
-        propertyPath: m_Name
-        target: {fileID: 1255545118548024, guid: af5c52d7bd20f9b4095c5a7a02e86228,
-          type: 2}
-        value: Blade_1
-        isRootTransform: 0
-        targetTransformPrefabObject: {fileID: 0}
   - m_rLastModifiedNestedPrefab: {fileID: 0}
     m_rPrefabObject: {fileID: 100100000, guid: af5c52d7bd20f9b4095c5a7a02e86228, type: 2}
     m_oPropertyModificationsFromPrefab:
@@ -317,7 +310,7 @@ MonoBehaviour:
         propertyPath: m_LocalPosition.x
         target: {fileID: 4164955585422210, guid: af5c52d7bd20f9b4095c5a7a02e86228,
           type: 2}
-        value: -1.69
+        value: 0
         isRootTransform: 1
         targetTransformPrefabObject: {fileID: 100100000, guid: af5c52d7bd20f9b4095c5a7a02e86228,
           type: 2}
@@ -325,7 +318,7 @@ MonoBehaviour:
         propertyPath: m_LocalPosition.y
         target: {fileID: 4164955585422210, guid: af5c52d7bd20f9b4095c5a7a02e86228,
           type: 2}
-        value: -3.24
+        value: -6.7499995
         isRootTransform: 1
         targetTransformPrefabObject: {fileID: 100100000, guid: af5c52d7bd20f9b4095c5a7a02e86228,
           type: 2}
@@ -377,6 +370,13 @@ MonoBehaviour:
         isRootTransform: 1
         targetTransformPrefabObject: {fileID: 100100000, guid: af5c52d7bd20f9b4095c5a7a02e86228,
           type: 2}
+      - objectReference: {fileID: 0}
+        propertyPath: m_Name
+        target: {fileID: 1255545118548024, guid: af5c52d7bd20f9b4095c5a7a02e86228,
+          type: 2}
+        value: Blade_1
+        isRootTransform: 0
+        targetTransformPrefabObject: {fileID: 0}
   m_bHasInstantiate: 0
 --- !u!114 &114847259766443264
 MonoBehaviour:
@@ -390,74 +390,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rNestedPrefabDatas:
-  - m_rLastModifiedNestedPrefab: {fileID: 0}
-    m_rPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6, type: 2}
-    m_oPropertyModificationsFromPrefab:
-      m_oNestedPrefabPropertyModifications:
-      - objectReference: {fileID: 0}
-        propertyPath: m_LocalPosition.x
-        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-        value: 0
-        isRootTransform: 1
-        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-      - objectReference: {fileID: 0}
-        propertyPath: m_LocalPosition.y
-        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-        value: 0
-        isRootTransform: 1
-        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-      - objectReference: {fileID: 0}
-        propertyPath: m_LocalPosition.z
-        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-        value: 0
-        isRootTransform: 1
-        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-      - objectReference: {fileID: 0}
-        propertyPath: m_LocalRotation.x
-        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-        value: 0
-        isRootTransform: 1
-        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-      - objectReference: {fileID: 0}
-        propertyPath: m_LocalRotation.y
-        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-        value: 0
-        isRootTransform: 1
-        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-      - objectReference: {fileID: 0}
-        propertyPath: m_LocalRotation.z
-        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-        value: 0
-        isRootTransform: 1
-        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-      - objectReference: {fileID: 0}
-        propertyPath: m_LocalRotation.w
-        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-        value: 1
-        isRootTransform: 1
-        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-      - objectReference: {fileID: 0}
-        propertyPath: m_RootOrder
-        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
-        value: 2
-        isRootTransform: 1
-        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
-          type: 2}
   - m_rLastModifiedNestedPrefab: {fileID: 0}
     m_rPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6, type: 2}
     m_oPropertyModificationsFromPrefab:
@@ -533,6 +465,74 @@ MonoBehaviour:
         value: Food
         isRootTransform: 0
         targetTransformPrefabObject: {fileID: 0}
+  - m_rLastModifiedNestedPrefab: {fileID: 0}
+    m_rPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6, type: 2}
+    m_oPropertyModificationsFromPrefab:
+      m_oNestedPrefabPropertyModifications:
+      - objectReference: {fileID: 0}
+        propertyPath: m_LocalPosition.x
+        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+        value: 0
+        isRootTransform: 1
+        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+      - objectReference: {fileID: 0}
+        propertyPath: m_LocalPosition.y
+        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+        value: -0.96
+        isRootTransform: 1
+        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+      - objectReference: {fileID: 0}
+        propertyPath: m_LocalPosition.z
+        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+        value: 0
+        isRootTransform: 1
+        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+      - objectReference: {fileID: 0}
+        propertyPath: m_LocalRotation.x
+        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+        value: 0
+        isRootTransform: 1
+        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+      - objectReference: {fileID: 0}
+        propertyPath: m_LocalRotation.y
+        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+        value: 0
+        isRootTransform: 1
+        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+      - objectReference: {fileID: 0}
+        propertyPath: m_LocalRotation.z
+        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+        value: 0
+        isRootTransform: 1
+        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+      - objectReference: {fileID: 0}
+        propertyPath: m_LocalRotation.w
+        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+        value: 1
+        isRootTransform: 1
+        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+      - objectReference: {fileID: 0}
+        propertyPath: m_RootOrder
+        target: {fileID: 4898642593318886, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
+        value: 0
+        isRootTransform: 1
+        targetTransformPrefabObject: {fileID: 100100000, guid: dc2c1e25104e12741a71fe6e4b0089e6,
+          type: 2}
   m_bHasInstantiate: 0
 --- !u!114 &114863642167348120
 MonoBehaviour:

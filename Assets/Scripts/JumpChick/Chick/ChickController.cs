@@ -78,10 +78,6 @@ namespace JumpChick
 
         private void RegisterListener()
         {
-            var input = FindObjectOfType<InputHandler>();
-            input.OnLeftClicked += OnMoveLeft;
-            input.OnRightClicked += OnMoveRight;
-
             var health = GetComponent<PlayerHealth>();
             health.OnDead += OnPlayerDead;
         }
@@ -91,8 +87,13 @@ namespace JumpChick
             if (state != State.Dead)
             {
                 state = State.Dead;
+
+                m_anim.SetBool("IsDead", true);
+
                 transform.DOMoveY(4f, 1.0f).SetRelative();
                 transform.DOScale(2.0f, 1.0f);
+
+                AudioManager.Instance.PlayDeadSound();
             }
 
         }
@@ -148,15 +149,41 @@ namespace JumpChick
             }
         }
 
+        private bool IsInRangeLeft()
+        {
+            return transform.position.x > -m_moveRangeX;
+        }
+
+        private bool IsInRangeRight()
+        {
+            return transform.position.x < m_moveRangeX;
+        }
+
         void FixedUpdate()
         {
 
         }
 
+        private Sequence seq = null;
+        private void ShowScaleEffect(bool show)
+        {
+            if (show)
+            {
+                seq = DOTween.Sequence();
+                seq.Append(transform.DOScale(1.05f, 0.05f));
+                seq.Append(transform.DOScale(1.0f, 0.05f));
+                seq.SetLoops(-1);
+            }
+            else
+            {
+                DOTween.Kill(seq);
+            }
+        }
+
         public override void OnPlayerPressed()
         {
             m_isFallingSlow = true;
-            ShowSlowEffect(m_isFallingSlow);
+            ShowScaleEffect(m_isFallingSlow);
             m_anim.SetBool("FallSlow", true);
             Debug.Log("Player pressed. jump");
         }
@@ -164,35 +191,38 @@ namespace JumpChick
         public override void OnPlayerReleased()
         {
             m_isFallingSlow = false;
-            ShowSlowEffect(m_isFallingSlow);
+            ShowScaleEffect(m_isFallingSlow);
             m_anim.SetBool("FallSlow", false);
             //Debug.Log("Player relesed. stop jump");
         }
 
+        public bool IsMovingLeft()
+        {
+            return m_speedX < 0 || (m_speedX ==0 && transform.position.x <= -m_moveRangeX);
+        }
+
         public void OnMoveLeft()
         {
-            m_speedX = -m_maxSpeedX;
+            if (IsInRangeLeft())
+            {
+                m_speedX = -m_maxSpeedX;
+
+                //AudioManager.Instance.PlayMoveSound();
+            }
         }
 
         public void OnMoveRight()
         {
-            m_speedX = m_maxSpeedX;
+            if (IsInRangeRight())
+            {
+                m_speedX = m_maxSpeedX;
+                //AudioManager.Instance.PlayMoveSound();
+            }
         }
 
         public void OnStopMoveHorizontal()
         {
             m_speedX = 0;
-        }
-
-        private void ShowSlowEffect(bool show)
-        {
-            if (show)
-            {
-                //transform.DOScale(new Vector3(1.5f, 1.5f, 1f), 0.2f);
-            }
-            else {
-                //transform.DOScale(new Vector3(1.0f, 1.0f, 1f), 0.2f);
-            }
         }
         //protected override void OnColliderDown()
         //{

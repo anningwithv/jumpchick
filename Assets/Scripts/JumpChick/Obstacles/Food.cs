@@ -29,9 +29,13 @@ namespace JumpChick
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (!GameBasic._game.IsRuning())
+                return;
+
             if (collision.gameObject.tag == Tags.PLAYER)
             {
                 UIManager.Instance.m_gamePanel.OnGetFood(m_powerNum, m_scoreNum);
+                AudioManager.Instance.PlayGetFoodSound();
                 gameObject.SetActive(false);
             }
         }

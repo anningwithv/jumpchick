@@ -68,7 +68,7 @@ namespace JumpChick
 
             if (m_target.position.y - m_curLastLevel.GetEndPos() < 30)
             {
-                //Debug.Log ("need to spawn next obstacles");
+                Debug.Log ("need to spawn next obstacles");
                 return true;
             }
 
@@ -89,6 +89,7 @@ namespace JumpChick
             //GameObject go = HierarchicalPrefabUtility.Instantiate(levelPrefab.gameObject, transform.position, Quaternion.identity);
             Transform prefab = PoolManager.Instance.SpawnObject(levelPrefab.transform);
             //Transform prefab = go.transform;
+            prefab.gameObject.SetActive(true);
             if (m_curLastLevel == null)
             {
                 prefab.position = new Vector3(0, -2, 0);

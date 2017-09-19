@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using System;
+using PlatformBasic;
 
 namespace JumpChick
 {
@@ -31,8 +32,8 @@ namespace JumpChick
             if (show)
             {
                 gameObject.SetActive(true);
-                m_score.text = DataHelper.GetScore().ToString();
-                GetComponent<RectTransform>().DOMoveY(-1245, 1.0f).SetRelative();
+                m_score.text = UIManager.Instance.m_gamePanel.m_score.GetScore().ToString();
+                GetComponent<RectTransform>().DOLocalMoveY(0, 1.0f);
             }
             else
             {
@@ -42,7 +43,11 @@ namespace JumpChick
 
         public void Show()
         {
-            Show(true);
+            gameObject.SetActive(true);
+
+            Util.DoWithDelay(this, 1.0f, () => {
+                Show(true);
+            });
         }
 
         public void Hide()

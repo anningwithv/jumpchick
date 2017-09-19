@@ -20,6 +20,9 @@ namespace JumpChick
         [HideInInspector]
         public bool m_isPressedDown = false;
 
+        [HideInInspector]
+        public bool m_isLongPressed = false;
+
         public System.Action OnPressDown = null;
         public System.Action OnPressUp = null;
 

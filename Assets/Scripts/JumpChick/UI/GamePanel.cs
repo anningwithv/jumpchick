@@ -17,9 +17,12 @@ namespace JumpChick
 	public class GamePanel : MonoBehaviour,IUIPanel
 	{
         public Score m_score = null;
-        public Button m_leftBtn = null;
-        public Button m_rightBtn = null;
+        public ButtonPressCheck m_leftBtn = null;
+        public ButtonPressCheck m_rightBtn = null;
         public ButtonPressCheck m_speedDownBtn = null;
+        public Button m_leftBtn1 = null;
+        public Button m_rightBtn1 = null;
+
         public Image m_powerProgress = null;
 
         private float m_maxPower = 30f;
@@ -29,16 +32,43 @@ namespace JumpChick
 
         void Start () 
 		{
-            m_leftBtn.onClick.AddListener(delegate() {
-                ChickController.Instance.OnMoveLeft();
-            });
+            //if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+            //{
 
-            m_rightBtn.onClick.AddListener(delegate () {
-                ChickController.Instance.OnMoveRight();
-            });
+            //    if (Input.touchCount > 0)
+            //    {
+            //        if (Input.GetTouch(0).phase == TouchPhase.Began)
+            //        {
+            //            if (Input.GetTouch(0).position.x < Screen.width / 2)
+            //            {
+            //                ChickController.Instance.OnMoveLeft();
+            //            }
+            //            else
+            //            {
+            //                ChickController.Instance.OnMoveRight();
+            //            }
+            //        }
+            //    }
+            //}
 
-            m_speedDownBtn.OnPressDown += SpeedDownBtnDown;
-            m_speedDownBtn.OnPressUp += SpeedDownBtnUp;
+            //m_leftBtn1.onClick.AddListener(delegate ()
+            //{
+            //    ChickController.Instance.OnMoveLeft();
+            //});
+
+            //m_rightBtn1.onClick.AddListener(delegate ()
+            //{
+            //    ChickController.Instance.OnMoveRight();
+            //});
+
+            m_leftBtn.OnPressDown += LeftBtnDown;
+            m_leftBtn.OnPressUp += LeftBtnUp;
+
+            m_rightBtn.OnPressDown += RightBtnDown;
+            m_rightBtn.OnPressUp += RightBtnUp;
+
+            //m_speedDownBtn.OnPressDown += SpeedDownBtnDown;
+            //m_speedDownBtn.OnPressUp += SpeedDownBtnUp;
 
             m_curPoswer = m_maxPower;
         }
@@ -51,29 +81,48 @@ namespace JumpChick
                 m_curPoswer = Mathf.Clamp(m_curPoswer, 0, m_maxPower);
                 UpdatePowerProgress();
             }
+        }
 
-            if (Application.platform == RuntimePlatform.WindowsEditor)
+        private void LeftBtnDown()
+        {
+            if (m_rightBtn.m_isPressedDown)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    SpeedDownBtnDown();
-                }
-
-                if (Input.GetKeyUp(KeyCode.Space))
-                {
-                    SpeedDownBtnUp();
-                }
-
-                if (Input.GetKeyDown(KeyCode.A))
-                {
-                    ChickController.Instance.OnMoveLeft();
-                }
-
-                if (Input.GetKeyDown(KeyCode.D))
-                {
-                    ChickController.Instance.OnMoveRight();
-                }
+                SpeedDownBtnDown();
+                return;
             }
+            ChickController.Instance.OnMoveLeft();
+        }
+
+        private void LeftBtnUp()
+        {
+            if (m_isUsingPower && m_rightBtn.m_isPressedDown)
+            {
+                ChickController.Instance.OnMoveRight();
+            }
+
+            SpeedDownBtnUp();
+        }
+
+        private void RightBtnDown()
+        {
+            if (m_leftBtn.m_isPressedDown)
+            {
+                SpeedDownBtnDown();
+                return;
+            }
+
+            ChickController.Instance.OnMoveRight();
+        }
+
+        private void RightBtnUp()
+        {
+            if (m_isUsingPower && m_leftBtn.m_isPressedDown)
+            {
+                ChickController.Instance.OnMoveLeft();
+            }
+
+            SpeedDownBtnUp();
+            //ChickController.Instance.OnStopMoveHorizontal();
         }
 
         private void SpeedDownBtnDown()
@@ -84,6 +133,7 @@ namespace JumpChick
             }
 
             m_isUsingPower = true;
+            ChickController.Instance.OnStopMoveHorizontal();
             ChickController.Instance.OnPlayerPressed();
         }
 
