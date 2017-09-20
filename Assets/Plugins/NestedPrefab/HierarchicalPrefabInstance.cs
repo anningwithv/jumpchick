@@ -110,7 +110,7 @@ public class HierarchicalPrefabInstance : MonoBehaviour
 	// Display the uncompiled prefab error
 	private void DisplayUncompiledPrefabError()
 	{
-		Debug.LogError("You can't instantiate an uncompiled hierarchical prefab! Use the Compile button on the nested prefab editor.");
+		Debug.LogError("You can't instantiate an uncompiled hierarchical prefab! Use the Compile button on the nested prefab editor." + transform.name);
 	}
 	
 	// Display the cant instantiate at runtime error

@@ -124,8 +124,8 @@ MonoBehaviour:
   m_missile: {fileID: 1130597481487354, guid: 4418fa45b12cf34428f87c7d783f2446, type: 2}
   m_missilePos: {fileID: 4161672876411868}
   m_dirction: 1
-  m_fireInterval: 3
-  m_missileSpd: 1
+  m_fireInterval: 4
+  m_missileSpd: 1.5
 --- !u!114 &114810624603741078
 MonoBehaviour:
   m_ObjectHideFlags: 1

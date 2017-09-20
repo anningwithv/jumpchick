@@ -10,7 +10,8 @@ namespace PlatformBasic
         public float m_rotateSpd = 360f;
         void Start()
         {
-            transform.DORotate(new Vector3(0, 0, 360), 360/m_rotateSpd).SetRelative().SetEase(Ease.Linear).SetLoops(-1);
+            float direction = (m_rotateSpd / Mathf.Abs(m_rotateSpd));
+            transform.DORotate(new Vector3(0, 0, 360 * direction), Mathf.Abs(360 /m_rotateSpd)).SetRelative().SetEase(Ease.Linear).SetLoops(-1);
 
         }
 

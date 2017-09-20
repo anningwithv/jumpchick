@@ -42,7 +42,7 @@ namespace JumpChick
         private float m_maxFallSlowSpeedY = -2f;
         private float m_deltaSpeedY = 12f;
         private float m_speedX = 0f;
-        private float m_maxSpeedX = 6f;
+        private float m_maxSpeedX = 6.5f;
         private float m_moveRangeX = 2.6f;
 
         private Animator m_anim = null;

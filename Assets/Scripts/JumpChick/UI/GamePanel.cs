@@ -11,6 +11,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using PlatformBasic;
 
 namespace JumpChick
 {
@@ -83,6 +84,81 @@ namespace JumpChick
             }
         }
 
+        //private void LeftBtnDown()
+        //{
+        //    if (m_rightBtn.m_isPressedDown)
+        //    {
+        //        SpeedDownBtnDown();
+        //        return;
+        //    }
+        //    ChickController.Instance.OnMoveLeft();
+        //}
+
+        //private void LeftBtnUp()
+        //{
+        //    if (m_isUsingPower && m_rightBtn.m_isPressedDown)
+        //    {
+        //        Util.DoWithDelay(this, 0.1f, () =>
+        //        {
+        //            if (m_rightBtn.m_isPressedDown)
+        //            {
+        //                ChickController.Instance.OnMoveRight();
+        //            }
+        //        });
+        //    }
+
+        //    SpeedDownBtnUp();
+        //}
+
+        //private void RightBtnDown()
+        //{
+        //    if (m_leftBtn.m_isPressedDown)
+        //    {
+        //        SpeedDownBtnDown();
+        //        return;
+        //    }
+
+        //    ChickController.Instance.OnMoveRight();
+        //}
+
+        //private void RightBtnUp()
+        //{
+        //    if (m_isUsingPower && m_leftBtn.m_isPressedDown)
+        //    {
+        //        Util.DoWithDelay(this, 0.1f, () =>
+        //        {
+        //            if (m_leftBtn.m_isPressedDown)
+        //            {
+        //                ChickController.Instance.OnMoveLeft();
+        //            }
+        //        });
+        //    }
+
+        //    SpeedDownBtnUp();
+        //    //ChickController.Instance.OnStopMoveHorizontal();
+        //}
+
+        //private void SpeedDownBtnDown()
+        //{
+        //    if (!CanUsePower())
+        //    {
+        //        return;
+        //    }
+
+        //    m_isUsingPower = true;
+        //    ChickController.Instance.OnStopMoveHorizontal();
+        //    ChickController.Instance.OnPlayerPressed();
+        //}
+
+        //private void SpeedDownBtnUp()
+        //{
+        //    if (m_isUsingPower)
+        //    {
+        //        m_isUsingPower = false;
+        //        ChickController.Instance.OnPlayerReleased();
+        //    }
+        //}
+
         private void LeftBtnDown()
         {
             if (m_rightBtn.m_isPressedDown)
@@ -97,10 +173,19 @@ namespace JumpChick
         {
             if (m_isUsingPower && m_rightBtn.m_isPressedDown)
             {
-                ChickController.Instance.OnMoveRight();
-            }
+                Util.DoWithDelay(this, 0.1f, () =>
+                {
+                    if (m_rightBtn.m_isPressedDown)
+                    {
+                        ChickController.Instance.OnMoveRight();
+                    }
+                });
 
-            SpeedDownBtnUp();
+                SpeedDownBtnUp();
+            }
+            else {
+                ChickController.Instance.OnStopMoveHorizontal();
+            }
         }
 
         private void RightBtnDown()
@@ -118,11 +203,20 @@ namespace JumpChick
         {
             if (m_isUsingPower && m_leftBtn.m_isPressedDown)
             {
-                ChickController.Instance.OnMoveLeft();
-            }
+                Util.DoWithDelay(this, 0.1f, () =>
+                {
+                    if (m_leftBtn.m_isPressedDown)
+                    {
+                        ChickController.Instance.OnMoveLeft();
+                    }
+                });
 
-            SpeedDownBtnUp();
-            //ChickController.Instance.OnStopMoveHorizontal();
+                SpeedDownBtnUp();
+            }
+            else
+            {
+                ChickController.Instance.OnStopMoveHorizontal();
+            }
         }
 
         private void SpeedDownBtnDown()
