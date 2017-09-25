@@ -47,20 +47,25 @@ namespace JumpChick
             {
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    JumpChick.ChickController.Instance.OnPlayerPressed();
+                    JumpChick.ChickController.Instance.OnFallFast();
                 }
 
                 if (Input.GetKeyUp(KeyCode.Space))
                 {
-                    JumpChick.ChickController.Instance.OnPlayerReleased();
+                    JumpChick.ChickController.Instance.OnFallNormal();
                 }
 
-                if (Input.GetKeyDown(KeyCode.A))
+                if (Input.GetKey(KeyCode.A))
                 {
                     ChickController.Instance.OnMoveLeft();
                 }
 
-                if (Input.GetKeyDown(KeyCode.D))
+                if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+                {
+                    ChickController.Instance.OnStopMoveHorizontal();
+                }
+
+                if (Input.GetKey(KeyCode.D))
                 {
                     ChickController.Instance.OnMoveRight();
                 }

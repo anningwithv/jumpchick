@@ -412,6 +412,7 @@
     <Compile Include="Assets\Scripts\JumpChick\UI\MenuPanel.cs" />
     <Compile Include="Assets\Scripts\JumpChick\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\JumpChick\Util\DataHelper.cs" />
+    <Compile Include="Assets\Scripts\JumpChick\Util\LoadSceneAsync.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\3rdAssets\Camera Filter Pack\Resources\CameraFilterPack_3D_Anomaly.shader" />

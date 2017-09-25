@@ -33,13 +33,15 @@ namespace JumpChick
             Dead
         }
 
-        private bool m_isFallingSlow = false;
+        private bool m_isFallingFast = false;
+        [HideInInspector]
+        public bool m_isHurt = false;
 
         private float m_jumpForceY = 20f;
         private float m_jumpForceX = 10f;
         private float m_speedY = 0f;
-        private float m_maxFallSpeedY = -7f;
-        private float m_maxFallSlowSpeedY = -2f;
+        private float m_maxFallSpeedY = -6f;
+        private float m_maxFallSlowSpeedY = -12f;
         private float m_deltaSpeedY = 12f;
         private float m_speedX = 0f;
         private float m_maxSpeedX = 6.5f;
@@ -80,6 +82,7 @@ namespace JumpChick
         {
             var health = GetComponent<PlayerHealth>();
             health.OnDead += OnPlayerDead;
+            health.OnHurt += OnHurt;
         }
 
         private void OnPlayerDead()
@@ -118,10 +121,21 @@ namespace JumpChick
 
         private void UpdateSpeed()
         {
-            // update spped y
-            if (m_isFallingSlow)
+            if (m_isHurt)
             {
-                if (m_speedY < m_maxFallSlowSpeedY) {
+                m_speedY = 0f;
+                m_speedX = 0f;
+                return;
+            }
+
+            // update spped y
+            if (m_isFallingFast)
+            {
+                if (m_speedY > m_maxFallSlowSpeedY) {
+                    m_speedY -= Time.deltaTime * m_deltaSpeedY;
+                }
+                else if (m_speedY < m_maxFallSlowSpeedY)
+                {
                     m_speedY += Time.deltaTime * m_deltaSpeedY;
                 }
             }
@@ -131,13 +145,11 @@ namespace JumpChick
                 {
                     m_speedY -= Time.deltaTime * m_deltaSpeedY;
                 }
+                else if (m_speedY < m_maxFallSpeedY)
+                {
+                    m_speedY += Time.deltaTime * m_deltaSpeedY;
+                }
             }
-
-            //if (m_speedY < targetSpd)
-            //{
-            //    m_speedY += Time.deltaTime * m_deltaSpeedY;
-            //    m_speedY = targetSpd;
-            //}
 
             // update speed X
             if (transform.position.x <= -m_moveRangeX && m_speedX < 0) {
@@ -164,13 +176,32 @@ namespace JumpChick
 
         }
 
+        private void OnHurt()
+        {
+            m_isHurt = true;
+            m_isFallingFast = false;
+
+            //m_anim.SetBool("IsHurt", m_isHurt);
+
+            Util.DoWithDelay(this, 0.5f, () =>
+            {
+                m_isHurt = false;
+                //m_anim.SetBool("IsHurt", m_isHurt);
+            });
+
+            Sequence seq = DOTween.Sequence();
+            seq.Append(transform.DOScale(0.7f, 0.1f));
+            seq.Append(transform.DOScale(1.0f, 0.1f));
+            seq.SetLoops(2);
+        }
+
         private Sequence seq = null;
         private void ShowScaleEffect(bool show)
         {
             if (show)
             {
                 seq = DOTween.Sequence();
-                seq.Append(transform.DOScale(1.05f, 0.05f));
+                seq.Append(transform.DOScale(0.95f, 0.05f));
                 seq.Append(transform.DOScale(1.0f, 0.05f));
                 seq.SetLoops(-1);
             }
@@ -180,19 +211,20 @@ namespace JumpChick
             }
         }
 
-        public override void OnPlayerPressed()
+        public void OnFallFast()
         {
-            m_isFallingSlow = true;
-            ShowScaleEffect(m_isFallingSlow);
+            m_isFallingFast = true;
+            ShowScaleEffect(m_isFallingFast);
             m_anim.SetBool("FallSlow", true);
             Debug.Log("Player pressed. jump");
         }
 
-        public override void OnPlayerReleased()
+        public void OnFallNormal()
         {
-            m_isFallingSlow = false;
-            ShowScaleEffect(m_isFallingSlow);
+            m_isFallingFast = false;
+            ShowScaleEffect(m_isFallingFast);
             m_anim.SetBool("FallSlow", false);
+            //transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             //Debug.Log("Player relesed. stop jump");
         }
 

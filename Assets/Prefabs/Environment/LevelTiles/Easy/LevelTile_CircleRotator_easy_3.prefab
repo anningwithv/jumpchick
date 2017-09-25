@@ -656,6 +656,6 @@ MonoBehaviour:
   m_bCanBeInstantiatedAtRuntime: 1
   m_iHierarchicalPrefabVersionNumber: 13
   m_rPrefabObject: {fileID: 100100000}
-  m_rCompiledHierarchicalPrefab: {fileID: 1365425835686344, guid: 730339803632b3543a5dc84eae6b0edd,
+  m_rCompiledHierarchicalPrefab: {fileID: 1356097254744962, guid: 49fff53a733bef74aa09b38e2da12cff,
     type: 2}
   m_bSceneInstance: 0
